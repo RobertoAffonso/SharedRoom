@@ -4,6 +4,9 @@
  */
 package com.sharedroom.model.usuario.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.sharedroom.model.Usuario.UsuarioVO;
 
 public class UsuarioDAO
@@ -94,6 +97,21 @@ public class UsuarioDAO
 		.append(COL_RG_USUARIO).append(" = ? ");
 		
 		return sb.toString();
+	}
+	
+	private void dbDelete(UsuarioVO usuario) throws SQLException
+	{
+		try
+		{
+			PreparedStatement ps = null;
+			String sql = "DELETE FROM " + TABLE_USUARIO + 
+						" WHERE " + COL_IDT_USUARIO + " = " + usuario.getIdt();
+			ps.
+		}
+		catch (Exception e)
+		{
+			// TODO: handle exception
+		}
 	}
 }
 
