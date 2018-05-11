@@ -2,7 +2,7 @@
  * @author Roberto Affonso Araújo
  *
  */
-package com.sharedroom.model.usuario.DAO;
+package com.sharedroom.model.Usuario.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

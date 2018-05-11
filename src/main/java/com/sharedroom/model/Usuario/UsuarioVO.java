@@ -7,7 +7,9 @@ package com.sharedroom.model.Usuario;
 import java.util.Date;
 import java.util.Objects;
 
-public class UsuarioVO
+import com.sharedroom.model.ValueObject.PersistanceValueObject;
+
+public class UsuarioVO implements PersistanceValueObject
 {
 	private int idt;
 	private String nome;
@@ -104,6 +106,12 @@ public class UsuarioVO
 	public String getRg()
 	{
 		return rg;
+	}
+
+	@Override
+	public boolean validate() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
 
