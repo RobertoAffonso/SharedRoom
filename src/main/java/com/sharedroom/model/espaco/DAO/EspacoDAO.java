@@ -1,6 +1,7 @@
 package com.sharedroom.model.espaco.DAO;
 
 import com.sharedroom.model.DataAccessObject.DataAccessObject;
+import com.sharedroom.model.DataAccessObject.mainDAO;
 import com.sharedroom.model.Espaco.EspacoVO;
 import com.sun.beans.decoder.ValueObject;
 
@@ -14,7 +15,8 @@ import java.util.List;
  * @author Roberto Affonso, created on 5/11/18
  **/
 
-public class EspacoDAO implements DataAccessObject {
+public class EspacoDAO extends mainDAO
+implements DataAccessObject {
     public static final String TABLE_NAME = "tb_espaco";
     public static final String TB_IDT_ESPACO = "idt_espaco";
     public static final String TB_COL_AREA_ESPACO = "area_espaco";
@@ -30,7 +32,7 @@ public class EspacoDAO implements DataAccessObject {
 
     @Override
     public List<EspacoVO> dbLoadAll() throws SQLException {
-        try{
+        try(Connection conn = (Connection) super.getConnection()){
 
         }
         catch(SQLException ex){
@@ -91,7 +93,8 @@ public class EspacoDAO implements DataAccessObject {
     public void dbUpdate(EspacoVO espaco) throws SQLException {
         try(PreparedStatement ps = null){
             String sql = generateUpdateSql();
-            ps =
+            ps = super.getConnection().connect().prepareStatement(sql);
+            ps.executeUpdate();
         }
         catch(SQLException ex){
             ex.printStackTrace();
