@@ -65,8 +65,5 @@ public class EspacoVO implements PersistanceValueObject{
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	
-	
-
 }
 
