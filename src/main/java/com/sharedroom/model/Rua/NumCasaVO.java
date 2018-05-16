@@ -10,6 +10,7 @@ import com.sharedroom.model.SubespacoVO.SubespacoVO;
 public class NumCasaVO {
 	
 	protected RuaVO rua;
+	private SubespacoVO subespaco;
 	private int idt;
 	private String idCasa;
 	private String referencia;

@@ -11,6 +11,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
 /**
  * @author Roberto Affonso, created on 5/11/18
  **/
@@ -23,7 +29,14 @@ implements DataAccessObject {
     public static final String TB_COL_CEP_ESPACO = "cep_espaco";
     public static final String TB_COL_HOSPEDES_ESPACOS = "qtd_hospedes_espaco";
     public static final String TB_COL_END_ESPACO = "end_espaco";
-
+    
+    private JdbcTemplate jdbcTemplate;
+    
+    @Autowired
+	public void setDataSource(DataSource datasource) {
+		jdbcTemplate = new JdbcTemplate(datasource);
+	}
+    
     @Override
     public String generateSelectAllSql(){
         StringBuilder sb = new StringBuilder("SELECT * FROM " + TABLE_NAME);
@@ -41,15 +54,11 @@ implements DataAccessObject {
         return null;
     }
 
-    @Override
-    public EspacoVO dbLoad() throws SQLException {
-        try(PreparedStatement ps = null; ResultSet rs = null){
-
-        }
-        catch(SQLException ex){
-            ex.printStackTrace();
-            throw ex;
-        }
+    public EspacoVO dbLoad(Integer id)  {
+        	String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + TB_IDT_ESPACO + " = ?";
+        	Object[] args = new Object[] {id};
+        	EspacoVO espaco = jdbcTemplate.queryForObject(sql, args, new EspacoRowMapper());
+        	return espaco;
     }
 
     @Override
@@ -69,10 +78,16 @@ implements DataAccessObject {
     @Override
     public void dbInsert(EspacoVO espaco) throws SQLException {
         try{
-
+        	String sql = generateDeleteSql();
+        	Object[] args = {espaco.getAreaEspaco(),
+        			         espaco.getCep(),
+        			         espaco.getQtdHospedes(),
+        			         espaco.getEnderecoEsp(),
+        			         espaco.getIdt()};
+        	jdbcTemplate.update(sql, args);
         }
-        catch(SQLException ex){
-
+        catch(Exception ex){
+        	throw ex;
         }
     }
 
@@ -93,8 +108,12 @@ implements DataAccessObject {
     public void dbUpdate(EspacoVO espaco) throws SQLException {
         try(PreparedStatement ps = null){
             String sql = generateUpdateSql();
-            ps = super.getConnection().connect().prepareStatement(sql);
-            ps.executeUpdate();
+            Object[] args = new Object[] {espaco.getAreaEspaco(),
+            							  espaco.getCep(),
+            							  espaco.getQtdHospedes(),
+            							  espaco.getEnderecoEsp(),
+            							  espaco.getIdt()};
+            jdbcTemplate.update(sql, args);
         }
         catch(SQLException ex){
             ex.printStackTrace();
@@ -124,5 +143,11 @@ implements DataAccessObject {
     public void Validate(Connection conn, ValueObject object) throws SQLException {
 
     }
+
+	@Override
+	public EspacoVO dbLoad() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

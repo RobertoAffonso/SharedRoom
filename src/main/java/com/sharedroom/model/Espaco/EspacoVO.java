@@ -6,13 +6,14 @@ package com.sharedroom.model.Espaco;
 
 import javax.xml.bind.ValidationException;
 
-import com.sharedroom.model.Rua.ImagemVO;
-import com.sharedroom.model.Rua.SubespacoVO;
+import com.sharedroom.model.Imagem.ImagemVO;
+import com.sharedroom.model.SubespacoVO.SubespacoVO;
 import com.sharedroom.model.ValueObject.PersistanceValueObject;
 
 public class EspacoVO implements PersistanceValueObject{
 	
 	private double areaEspaco;
+	private int idt;
 	private int qtdHospedes;
 	private String enderecoEsp;
 	private String cep;
@@ -65,5 +66,17 @@ public class EspacoVO implements PersistanceValueObject{
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+
+
+	public int getIdt() {
+		return idt;
+	}
+
+
+	public void setIdt(int idt) {
+		this.idt = idt;
+	}
+	
+	
 }
 

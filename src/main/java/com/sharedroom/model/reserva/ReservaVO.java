@@ -35,7 +35,6 @@ public class ReservaVO implements PersistanceValueObject {
 			}
 		} 
 		catch (Throwable ex) {
-			throw ex.printStackTrace();
 			return false;
 		}
 		return true;

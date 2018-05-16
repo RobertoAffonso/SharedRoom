@@ -7,8 +7,15 @@ package com.sharedroom.model.Usuario.DAO;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
 import com.sharedroom.model.Usuario.UsuarioVO;
 
+@Repository("usrDao")
 public class UsuarioDAO
 {
 	private static final String TABLE_USUARIO = "tb_usuario";
@@ -21,6 +28,13 @@ public class UsuarioDAO
 	private static final String COL_CEL_USUARIO = "cel_usuario";
 	private static final String COL_CPF_USUARIO = "cpf_usuario";
 	private static final String COL_RG_USUARIO = "rg_usuario";
+	
+	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	public void setDataSource(DataSource datasource) {
+		jdbcTemplate = new JdbcTemplate(datasource);
+	}
 	
 	private String getSelectAllSql()
 	{
@@ -99,18 +113,17 @@ public class UsuarioDAO
 		return sb.toString();
 	}
 	
-	private void dbDelete(UsuarioVO usuario) throws SQLException
+	public void dbDelete(UsuarioVO usuario) throws SQLException
 	{
-		try
-		{
-			PreparedStatement ps = null;
+		try {
 			String sql = "DELETE FROM " + TABLE_USUARIO + 
-						" WHERE " + COL_IDT_USUARIO + " = " + usuario.getIdt();
-			ps.
+						" WHERE " + COL_IDT_USUARIO + " = ?";
+			Object[] args = new Object[] {usuario.getIdt()};
+			jdbcTemplate.update(sql, args);
 		}
-		catch (Exception e)
-		{
-			// TODO: handle exception
+		catch (Exception ex){
+			ex.printStackTrace();
+			throw ex;
 		}
 	}
 }
