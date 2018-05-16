@@ -1,4 +1,4 @@
-package com.sharedroom.model.espaco.DAO;
+package com.sharedroom.model.Espaco.DAO;
 
 import com.sharedroom.model.DataAccessObject.DataAccessObject;
 import com.sharedroom.model.DataAccessObject.mainDAO;
@@ -43,7 +43,7 @@ implements DataAccessObject {
 
     @Override
     public EspacoVO dbLoad() throws SQLException {
-        try(PreparedStatement ps = null, ResultSet rs = null){
+        try(PreparedStatement ps = null; ResultSet rs = null){
 
         }
         catch(SQLException ex){

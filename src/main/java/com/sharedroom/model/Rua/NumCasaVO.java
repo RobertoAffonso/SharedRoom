@@ -5,6 +5,7 @@
 package com.sharedroom.model.Rua;
 
 import com.sharedroom.model.Espaco.CidadeVO;
+import com.sharedroom.model.SubespacoVO.SubespacoVO;
 
 public class NumCasaVO {
 	
