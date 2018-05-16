@@ -1,5 +1,5 @@
 /**
- * @author Roberto Affonso Araújo
+ * @author Roberto Affonso Araújo e Hiago Teixeira
  *
  */
 package com.sharedroom.model.Usuario.DAO;
@@ -112,9 +112,32 @@ public class UsuarioDAO
 		
 		return sb.toString();
 	}
+	//Updating Users on data base
+	public void dbUpdate() throws SQLException{
+		try {
+			String sql="";
+			
+		}catch (Exception ex){
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
 	
-	public void dbDelete(UsuarioVO usuario) throws SQLException
-	{
+	
+	//Inserting Users on data base
+	public void dbInsert(UsuarioVO usuario) throws SQLException {
+		try {
+			String sql= "INSERT INTO tb_usuario(usr_usuario, eml_usuario, pwd_usuario, nme_usuario, dta_usuario, cel_usuario, cfp_usuario, rg_usuario)"+
+						"VALUES(?,?,?,?,?,?,?,?,? )";
+			
+		}catch (Exception ex){
+			ex.printStackTrace();
+			throw ex;
+		}
+	}
+	
+	//Deleting Users on data base
+	public void dbDelete(UsuarioVO usuario) throws SQLException {
 		try {
 			String sql = "DELETE FROM " + TABLE_USUARIO + 
 						" WHERE " + COL_IDT_USUARIO + " = ?";

@@ -1,5 +1,5 @@
 /**
- * @author Roberto Affonso Araújo
+ * @author Roberto Affonso Araújo e Hiago Teixeira
  *
  */
 package com.sharedroom.model.Usuario;
