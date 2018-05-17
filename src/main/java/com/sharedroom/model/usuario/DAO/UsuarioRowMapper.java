@@ -1,3 +1,6 @@
+/**
+ * @autor Hiago Teixeira
+ */
 package com.sharedroom.model.usuario.DAO;
 
 import com.sharedroom.model.Usuario.UsuarioVO;

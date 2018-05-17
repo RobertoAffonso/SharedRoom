@@ -3,6 +3,7 @@ package com.sharedroom.model.espaco.DAO;
 import com.sharedroom.model.DataAccessObject.DataAccessObject;
 import com.sharedroom.model.DataAccessObject.mainDAO;
 import com.sharedroom.model.Espaco.EspacoVO;
+import com.sharedroom.model.Espaco.DAO.EspacoRowMapper;
 import com.sun.beans.decoder.ValueObject;
 
 import java.sql.Connection;

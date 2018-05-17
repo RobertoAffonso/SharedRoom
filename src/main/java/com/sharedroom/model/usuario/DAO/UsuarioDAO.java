@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.sharedroom.model.Espaco.EspacoVO;
+import com.sharedroom.model.Espaco.DAO.EspacoRowMapper;
 import com.sharedroom.model.Usuario.UsuarioVO;
 
 @Repository("usrDao")
@@ -113,6 +114,24 @@ public class UsuarioDAO
 		
 		return sb.toString();
 	}
+	
+	//Loading Users from data base
+	 public UsuarioVO dbLoad(Integer id)  {
+     	String sql = "SELECT * FROM " + TABLE_USUARIO + " WHERE " + COL_IDT_USUARIO + " = ?";
+     	Object[] args = new Object[] {id};
+     	UsuarioVO usuario = jdbcTemplate.queryForObject(sql, args, new UsuarioRowMapper());
+     	return usuario;
+ }
+	//Loading Users from data base by name
+	 public UsuarioVO dbLoadByName(String nome) {
+		 String sql = "SELECT * FROM " + TABLE_USUARIO +"WHERE "+ COL_NME_USUARIO+ " = ?";
+		 Object[] args= new Object[]{nome};
+		 UsuarioVO usuario = jdbcTemplate.queryForObject(sql, args, new UsuarioRowMapper());
+		 return usuario;
+	 }
+	 
+	 
+	 
 	//Updating Users on data base
 	public void dbUpdate(UsuarioVO usuario) throws SQLException{
 		try {
