@@ -2,7 +2,7 @@
  * @author Roberto Affonso Araújo e Hiago Teixeira
  *
  */
-package com.sharedroom.model.Usuario.DAO;
+package com.sharedroom.model.usuario.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.sharedroom.model.Espaco.EspacoVO;
 import com.sharedroom.model.Usuario.UsuarioVO;
 
 @Repository("usrDao")
@@ -113,9 +114,17 @@ public class UsuarioDAO
 		return sb.toString();
 	}
 	//Updating Users on data base
-	public void dbUpdate() throws SQLException{
+	public void dbUpdate(UsuarioVO usuario) throws SQLException{
 		try {
-			String sql="";
+			String sql= getUpdateSql();
+			Object[] args= {usuario.getLogin(),
+							usuario.getEmail(),
+							usuario.getSenha(),
+							usuario.getDataNascimento(),
+							usuario.getNumCelular(),
+							usuario.getCpf(),
+							usuario.getRg()};
+			jdbcTemplate.update(sql, args);
 			
 		}catch (Exception ex){
 			ex.printStackTrace();
@@ -126,22 +135,35 @@ public class UsuarioDAO
 	
 	//Inserting Users on data base
 	public void dbInsert(UsuarioVO usuario) throws SQLException {
-		try {
-			String sql= "INSERT INTO tb_usuario(usr_usuario, eml_usuario, pwd_usuario, nme_usuario, dta_usuario, cel_usuario, cfp_usuario, rg_usuario)"+
-						"VALUES(?,?,?,?,?,?,?,?,? )";
-			
-		}catch (Exception ex){
-			ex.printStackTrace();
-			throw ex;
-		}
-	}
+        try{
+        	String sql = getInsertSql();
+        	Object[] args = {usuario.getLogin(),
+        					 usuario.getEmail(),
+        					 usuario.getSenha(),
+        					 usuario.getNome(),
+        					 usuario.getDataNascimento(),
+        					 usuario.getNumCelular(),
+        					 usuario.getCpf(),
+        					 usuario.getRg()};
+        	jdbcTemplate.update(sql, args);
+        }
+        catch(Exception ex){
+        	throw ex;
+        }
+    }
+	
+	
+    public String getDeleteSql() {
+        StringBuilder sb = new StringBuilder("DELETE FROM " + TABLE_USUARIO + " ");
+                sb.append(COL_CPF_USUARIO).append(" = ?");
+        return sb.toString();
+    }
 	
 	//Deleting Users on data base
 	public void dbDelete(UsuarioVO usuario) throws SQLException {
 		try {
-			String sql = "DELETE FROM " + TABLE_USUARIO + 
-						" WHERE " + COL_IDT_USUARIO + " = ?";
-			Object[] args = new Object[] {usuario.getIdt()};
+			String sql = getDeleteSql();
+			Object[] args = {usuario.getCpf()};
 			jdbcTemplate.update(sql, args);
 		}
 		catch (Exception ex){

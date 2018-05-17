@@ -1,4 +1,4 @@
-package com.sharedroom.model.Espaco.DAO;
+package com.sharedroom.model.espaco.DAO;
 
 import com.sharedroom.model.DataAccessObject.DataAccessObject;
 import com.sharedroom.model.DataAccessObject.mainDAO;

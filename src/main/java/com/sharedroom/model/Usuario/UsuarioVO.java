@@ -15,7 +15,7 @@ public class UsuarioVO implements PersistanceValueObject
 	private String nome;
 	private String login;
 	private String email;
-	private char[] senha;
+	private String senha;
 	private Date dataNascimento;
 	private String numCelular;
 	private String cpf;
@@ -68,17 +68,33 @@ public class UsuarioVO implements PersistanceValueObject
 		return email;
 	}
 	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setData(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+	
 	public void setEmail(String email)
 	{
 		this.email = email;
 	}
 	
-	public char[] getSenha()
+	public String getSenha()
 	{
 		return senha;
 	}
 	
-	public void setSenha(char[] senha)
+	public void setSenha(String senha)
 	{
 		this.senha = senha;
 	}
