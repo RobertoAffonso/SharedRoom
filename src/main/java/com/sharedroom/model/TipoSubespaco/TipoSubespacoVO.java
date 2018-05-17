@@ -1,33 +1,44 @@
 /**
+ /**
  * @author Rafael-PC
  *
  */
+
 package com.sharedroom.model.TipoSubespaco;
-import com.sharedroom.model.Imagem.ImagemVO;
-import com.sharedroom.model.SubespacoVO.SubespacoVO;
-import com.sharedroom.model.ValueObject.PersistanceValueObject;
 
-import com.sharedroom.model.SubespacoVO.*;
-//import com.sharedroom.model.TipoEspaco.TipoEspacoVO.*; aguardar criação de tipo de espaco;
 
-public class TipoSubespacoVO
-{
+import com.sharedroom.model.TipoSubespaco.*;
+import java.util.Date;
+import java.util.Objects;
+
+
+public class TipoSubespacoVO {
+	
 	private int idt;
-	private String nome_tipoSubespaco;
-        private int cod_tipoEspaco;
-        //private Tipo_espacoVO espaco;
-        
-	
-	public String getNome()
+	private String nome;
+
+	@Override
+	public int hashCode()
 	{
-		return nome_tipoSubespaco;
+		// TODO Auto-generated method stub
+		return super.hashCode();
 	}
-	
-	public void setNome(String nme_tipoSubespaco)
+
+	@Override
+	public boolean equals(Object obj)
 	{
-		this.nome_tipoSubespaco = nme_tipoSubespaco;
+		if(this == obj)
+		{
+			return true;
+		}
+		if(!(obj instanceof TipoSubespacoVO))
+		{
+			return false;
+		}
+		
+		return Objects.equals(this.idt, ((TipoSubespacoVO) obj).getIdt());
 	}
-	
+
 	public int getIdt()
 	{
 		return idt;
@@ -38,17 +49,15 @@ public class TipoSubespacoVO
 		this.idt = idt;
 	}
 	
-	public int getCod_tipoEspaco()
+	public String getNome()
 	{
-		return cod_tipoEspaco;
+		return nome;
 	}
 	
-	public void setCod_tipoEspaco(int idt)
+	public void setNome(String nome)
 	{
-		this.idt = cod_tipoEspaco;
+		this.nome = nome;
 	}
-	
-	
-	
-}
+		
 
+}
