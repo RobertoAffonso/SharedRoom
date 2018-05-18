@@ -76,6 +76,28 @@ public class EspacoVO implements PersistanceValueObject{
 	public void setIdt(int idt) {
 		this.idt = idt;
 	}
+
+
+	public SubespacoVO getSubespaco() {
+		return subespaco;
+	}
+
+
+	public void setSubespaco(SubespacoVO subespaco) {
+		this.subespaco = subespaco;
+	}
+
+
+	public ImagemVO getImagem() {
+		return imagem;
+	}
+
+
+	public void setImagem(ImagemVO imagem) {
+		this.imagem = imagem;
+	}
+	
+	
 	
 	
 }

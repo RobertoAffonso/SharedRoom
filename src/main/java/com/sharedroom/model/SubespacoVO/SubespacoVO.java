@@ -27,9 +27,5 @@ public class SubespacoVO
 	{
 		this.idt = idt;
 	}
-	
-	
-	
-	
 }
 
