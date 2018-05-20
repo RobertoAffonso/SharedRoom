@@ -2,7 +2,7 @@
  * @author Roberto Affonso Araújo e Hiago Teixeira
  *
  */
-package com.sharedroom.model.usuario.DAO;
+package com.sharedroom.model.Usuario.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -12,12 +12,15 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sharedroom.model.Espaco.EspacoVO;
 import com.sharedroom.model.Espaco.DAO.EspacoRowMapper;
 import com.sharedroom.model.Usuario.UsuarioVO;
 
-@Repository("usrDao")
+
+@Repository
+@Transactional
 public class UsuarioDAO
 {
 	private static final String TABLE_USUARIO = "tb_usuario";
@@ -33,7 +36,7 @@ public class UsuarioDAO
 	
 	private JdbcTemplate jdbcTemplate;
 	
-	@Autowired
+
 	public void setDataSource(DataSource datasource) {
 		jdbcTemplate = new JdbcTemplate(datasource);
 	}

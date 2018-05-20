@@ -5,12 +5,15 @@ import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Roberto Affonso, created on 5/11/18
  **/
-@Repository("espacoDao")
+@Repository
+@Transactional
 public class EspacoDAOImpl 
 implements EspacoDAO  {
     public static final String TABLE_NAME = "tb_espaco";
@@ -22,7 +25,7 @@ implements EspacoDAO  {
     
     private JdbcTemplate jdbcTemplate;
     
-    @Autowired
+   
 	public void setDataSource(DataSource datasource) {
 		jdbcTemplate = new JdbcTemplate(datasource);
 	}

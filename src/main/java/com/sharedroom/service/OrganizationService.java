@@ -13,36 +13,36 @@ import com.sharedroom.model.Espaco.EspacoVO;
 import com.sharedroom.model.Espaco.DAO.EspacoDAO;
 import com.sharedroom.model.Subespaco.DAO.SubespacoDAO;
 import com.sharedroom.model.TipoSubespaco.DAO.TipoSubespacoDAO;
-import com.sharedroom.model.usuario.DAO.UsuarioDAO;
+//import com.sharedroom.model.usuario.DAO.UsuarioDAO;
 
-import exemplo.dao.OrganizationDAO;
-import exemplo.domain.Organization;
+//import exemplo.dao.OrganizationDAO;
+//import exemplo.domain.Organization;
 
 @Service
 public class OrganizationService {
 	
-	@Autowired
-	private OrganizationDAO organizationDAO;
-	
+//	@Autowired
+//	private OrganizationDAO organizationDAO;
+//	
 	@Autowired
 	private EspacoDAO espacoDAO;
 	
 	@Autowired
 	private SubespacoDAO subespacoDAO;
 	
-	@Autowired
-	private UsuarioDAO usuarioDAO;
+//	@Autowired
+//	private UsuarioDAO usuarioDAO;
 	
 	@Autowired
 	private TipoSubespacoDAO tipoSubespacoDAO;
 	
-	@Autowired
-	private ImagemDAO imagemDAO;
+//	@Autowired
+//	private ImagemDAO imagemDAO;
 	
-	public List<Organization> getOrganization(){
+	/*public List<Organization> getOrganization(){
 		List<Organization> orgs = organizationDAO.getAllOrganizations();
 		return orgs;
-	}
+	}*/
 	
 	/////////////////////////////////////////////////////////////////////
 	//// ESPAÇO                                                     ////

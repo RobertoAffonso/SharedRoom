@@ -10,15 +10,19 @@ import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sharedroom.model.Anuncio.AnuncioVO;
 import com.sharedroom.model.TipoSubespaco.DAO.TipoSubespacoRowMapper;
 import com.sharedroom.model.TipoSubespaco.TipoSubespacoVO;
 
 
-@Repository("tipoSubespacoDao")
 
+
+@Repository
+@Transactional
 public class TipoSubespacoDAO {
 
 	
@@ -29,8 +33,7 @@ public class TipoSubespacoDAO {
 	
 	private JdbcTemplate jdbcTemplate;
 	
-	
-	@Autowired
+
 	public void setDataSource(DataSource datasource) {
 		jdbcTemplate = new JdbcTemplate(datasource);
 	}

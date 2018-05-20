@@ -1,7 +1,7 @@
 /**
  * @autor Hiago Teixeira
  */
-package com.sharedroom.model.usuario.DAO;
+package com.sharedroom.model.Usuario.DAO;
 
 import com.sharedroom.model.Usuario.UsuarioVO;
 import java.sql.ResultSet;

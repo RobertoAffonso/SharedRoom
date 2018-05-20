@@ -15,6 +15,7 @@ import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
@@ -23,24 +24,32 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	
-	@Bean
+	/*@Bean
 	public DataSource dataSource() {
 		final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
 		dsLookup.setResourceRef(true);
 		DataSource dataSource = dsLookup.getDataSource("jdbc/springdb");
 		return dataSource;
 		
-	}
+	}*/
 	
-	@Bean
+	/*@Bean
 	public UrlBasedViewResolver urlBasedViewResolver(){
 		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-		resolver.setPrefix("WEB-INF/Views");
+		resolver.setPrefix("WEB-INF/views");
 		resolver.setSuffix(".jsp");
 		resolver.setViewClass(JstlView.class);
 		
 		return resolver;
 		
-	}
+	}*/
+	
+	@Bean
+    public InternalResourceViewResolver internalResourceViewResolve() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
 }
 

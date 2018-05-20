@@ -11,10 +11,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sharedroom.model.SubespacoVO.SubespacoVO;
 
-@Repository("subespacoDAO")
+@Transactional
+@Repository
 public class SubespacoDAOImpl implements SubespacoDAO{
 	
 	// CRIAR OBJETO PARA TIPO DE ESPAÇO.
@@ -26,7 +28,6 @@ public class SubespacoDAOImpl implements SubespacoDAO{
 	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
-	@Override
 	public void setDatasource(DataSource ds) {
 		jdbcTemplate = new JdbcTemplate(ds);
 	}
