@@ -2,7 +2,7 @@
  * @author Roberto Affonso Araújo e Hiago Teixeira
  *
  */
-package com.sharedroom.model.Usuario.DAO;
+package com.sharedroom.model.usuario.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -139,7 +139,7 @@ public class UsuarioDAO
 	public void dbUpdate(UsuarioVO usuario) throws SQLException{
 		try {
 			String sql= getUpdateSql();
-			Object[] args= {usuario.getLogin(),
+			Object[] args= {usuario.getUsr(),
 							usuario.getEmail(),
 							usuario.getSenha(),
 							usuario.getDataNascimento(),
@@ -159,7 +159,7 @@ public class UsuarioDAO
 	public void dbInsert(UsuarioVO usuario) throws SQLException {
         try{
         	String sql = getInsertSql();
-        	Object[] args = {usuario.getLogin(),
+        	Object[] args = {usuario.getUsr(),
         					 usuario.getEmail(),
         					 usuario.getSenha(),
         					 usuario.getNome(),

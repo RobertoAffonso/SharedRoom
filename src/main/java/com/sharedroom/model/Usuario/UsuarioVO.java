@@ -13,7 +13,7 @@ public class UsuarioVO implements PersistanceValueObject
 {
 	private int idt;
 	private String nome;
-	private String login;
+	private String usr;
 	private String email;
 	private String senha;
 	private Date dataNascimento;
@@ -53,14 +53,14 @@ public class UsuarioVO implements PersistanceValueObject
 		return nome;
 	}
 	
-	public String getLogin()
+	public String getUsr()
 	{
-		return login;
+		return usr;
 	}
 	
-	public void setLogin(String login)
+	public void setUsr(String usr)
 	{
-		this.login = login;
+		this.usr = usr;
 	}
 	
 	public String getEmail()

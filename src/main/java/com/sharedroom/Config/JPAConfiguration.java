@@ -1,7 +1,4 @@
-/**
- * @author Roberto Affonso Araújo
- *
- */
+
 package com.sharedroom.Config;
 
 import java.sql.DriverManager;
